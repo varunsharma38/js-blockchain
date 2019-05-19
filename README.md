@@ -1,2 +1,2 @@
-# react-webpack-boilerplate
-Boilerplate code for development with React and Webpack
+# js-blockchain
+A simple blockchain implementation using Javascript
