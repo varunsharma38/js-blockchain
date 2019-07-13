@@ -25,18 +25,22 @@ export default class BlockChain {
     createTransaction = transaction => this.pendingTransactions.push(transaction);
 
     getBalanceOfAddress = address => {
-        let balance = 0;
+        let balance = 0, found = false;
 
         for(const block of this.chain) {
             for(const trans of block.transactions) {
                 if(trans.fromAddress === address) {
+                    found = true;
                     balance -= trans.amount;
                 } else if(trans.toAddress === address) {
+                    found = true;
                     balance += trans.amount;
                 }
             }
         }
 
-        return balance;
+        return found ? balance : null;
     }
+
+    getChain = () => JSON.stringify(this.chain, null, 4);
 }
